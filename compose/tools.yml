@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+    pgadmin4:
+        image: dpage/pgadmin4
+        container_name: pgadmin4
+        restart: unless-stopped
+        networks:
+            - modular_monolith
+        env_file:
+            - tools.env
+        ports:
+            - 80:80
+        volumes:
+            - pgadmin4:/var/lib/pgadmin
+            - pgadmin4:/pgadmin4/config_local.py
+            - pgadmin4:/pgadmin4/servers.json
+        
+
+networks:
+    modular_monolith:
+        name: modular-monolith-network
+
+volumes:
+    pgadmin4:
+        driver: local
