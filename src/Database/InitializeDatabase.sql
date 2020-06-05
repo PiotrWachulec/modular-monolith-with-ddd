@@ -1,4 +1,7 @@
-﻿
+﻿USE ModularMonolith;
+GO
+
+
 GO
 PRINT N'Creating [administration]...';
 
