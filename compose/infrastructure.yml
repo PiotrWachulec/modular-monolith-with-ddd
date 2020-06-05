@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+    mssql:
+        image: mcr.microsoft.com/mssql/server:2017-latest
+        container_name: mssql
+        restart: unless-stopped
+        networks:  
+            - modular_monolith  
+        environment:
+            - ACCEPT_EULA=Y
+        env_file:
+            - db.env
+        ports: 
+            - 1433:1433
+        volumes:
+            - mssql:/var/opt/mssql
+
+networks:
+    modular_monolith:
+        name: modular-monolith-network
+
+volumes:
+    mssql:
+        driver: local            
